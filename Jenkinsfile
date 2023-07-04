@@ -33,7 +33,7 @@ pipeline {
         stage ('Helm Deploy') {
           steps {
             script {
-                sh"kubectl get all"
+                sh"exit"
                 sh "helm upgrade first --install mywebapp --namespace default"
                 }
             }
