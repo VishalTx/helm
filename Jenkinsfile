@@ -31,13 +31,13 @@ pipeline {
        //      }
        //  }
         stage ('Helm Deploy') {
-          steps {
-            script {
-                sh 'ls -la'
-                sh "helm upgrade first --install mywebapp --namespace default"
-                }
-            }
+          sshagent(['ubuntu']) {
+    // some block
+              sh 'ssh -o StrictHostChecking=no ubuntu@172.31.42.64 cd /home/ubuntu'
+              sh 'ssh -o StrictHostChecking=no ubuntu@172.31.42.64 ls'
+          }
         }
     
        }
     }
+
