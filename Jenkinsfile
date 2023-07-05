@@ -34,6 +34,9 @@ pipeline {
             steps {
           sshagent(['ubuntu']) {
     // some block
+             echo "Packing helm chart"
+              sh "helm package -d ${WORKSPACE}/helm ${WORKSPACE}/helm/webapp"
+              
               sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64'
               sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 cd /home/ubuntu'
               sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 helm install vishal1 webapp/webapp-0.1.0.tgz'
