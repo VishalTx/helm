@@ -31,13 +31,14 @@ pipeline {
        //      }
        //  }
         stage ('Helm Deploy') {
+            steps {
           sshagent(['ubuntu']) {
     // some block
               sh 'ssh -o StrictHostChecking=no ubuntu@172.31.42.64 cd /home/ubuntu'
               sh 'ssh -o StrictHostChecking=no ubuntu@172.31.42.64 ls'
           }
         }
-    
+        }
        }
     }
 
