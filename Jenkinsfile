@@ -36,7 +36,7 @@ pipeline {
     // some block
               sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64'
               sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 cd /home/ubuntu'
-              sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 helm install vishal webapp/webapp-0.1.0.tgz'
+              sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 helm install vishal1 webapp/webapp-0.1.0.tgz'
           }
         }
         }
