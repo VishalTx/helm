@@ -34,9 +34,9 @@ pipeline {
             steps {
           sshagent(['ubuntu']) {
     // some block
-              sh 'ssh -o StrictHostChecking=no ubuntu@172.31.42.64'
-              sh 'ssh -o StrictHostChecking=no ubuntu@172.31.42.64 cd /home/ubuntu'
-              sh 'ssh -o StrictHostChecking=no ubuntu@172.31.42.64 ls'
+              sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64'
+              sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 cd /home/ubuntu'
+              sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 ls'
           }
         }
         }
