@@ -40,6 +40,22 @@ pipeline {
           }
         }
         }
+        stage('Clean Up Approval'){
+                steps{              
+                    script {
+                        timeout(time: 10, unit: 'MINUTES'){
+                            input ('Proceed with deployment CleanUp?')
+                        }
+                    }        
+                } 
+            }
+        stage('Cleaning Workspace') {
+               steps{
+                        sshagent(['ubuntu']){
+                            sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 helm uninstall vishal1'
+                        }
+                }
+            }
        }
     }
 
