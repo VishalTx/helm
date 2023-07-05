@@ -33,7 +33,7 @@ pipeline {
         stage ('Helm Deploy') {
           steps {
             script {
-                sh 'ls'
+                sh 'cd'
                 sh "helm upgrade first --install mywebapp --namespace default"
                 }
             }
