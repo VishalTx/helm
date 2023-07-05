@@ -35,7 +35,7 @@ pipeline {
           sshagent(['ubuntu']) {
     // some block
              echo "Packing helm chart"
-              sh "helm package -d ${WORKSPACE}/helm ${WORKSPACE}/helm/webapp"
+              sh "helm package -d ${WORKSPACE}/helm ${WORKSPACE}/webapp"
               
               sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64'
               sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 cd /home/ubuntu'
