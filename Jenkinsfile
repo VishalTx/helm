@@ -25,27 +25,7 @@ pipeline {
                 }
             }
         }
-        stage('Update GIT') {
-           steps{
-            script {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
-                        sh "git config user.email vishal.sader@testingxperts.com"
-                        sh "git config user.name VishalTx"
-                        //sh "git switch master"
-                        
-                        sh "sed -i 's+manishaverma/helm.*+manishaverma/helm:${env.BUILD_NUMBER}+g' webapp/templates/deployment.yaml"
-                        sh "cat webapp/templates/deployment.yaml"
-                        sh "git add ."
-                        sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/helm.git HEAD:master"
-                    }
-                
-                }
-            }
-        }
-        }
+        
 
        // stage('Deploy Helm chart') {
        //      steps {
