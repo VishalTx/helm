@@ -45,7 +45,7 @@ pipeline {
         }
         stage ('updating the package to Jfrog'){
             steps{
-                 withCredentials([usernamePassword(credentialsId: 'helm', usernameVariable: 'helm_username', passwordVariable: 'helm_password')]){
+                 withCredentials([usernamePassword(credentialsId: 'helm', usernameVariable: 'HELM_USERNAME', passwordVariable: 'HELM_PASSWORD')]){
                 sh 'curl -T ${WORKSPACE}/helm/webapp-0.1.0.tgz "https://testingxperts.jfrog.io/artifactory/helm/"'
             }
         }
