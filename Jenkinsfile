@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        
+    }
  
     stages {
         // stage('Clone repository') {
@@ -37,10 +39,17 @@ pipeline {
              echo "Packing helm chart"
               sh "helm package -d ${WORKSPACE}/webapp ${WORKSPACE}/webapp"
               
-              sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64'
-              sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 cd /home/ubuntu'
-              sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 helm install vishal1 webapp/webapp-0.1.0.tgz'
+              // sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64'
+              // sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 cd /home/ubuntu'
+              // sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.42.64 helm install vishal1 webapp/webapp-0.1.0.tgz'
           }
+        }
+        }
+        stage ('updating the package to Jfrog'){
+            steps{
+                 withCredentials([usernamePassword(credentialsId: 'helm', usernameVariable: 'helm_username', passwordVariable: 'helm_password')]){
+                sh 'curl -T ${WORKSPACE}/helm/webapp-0.1.0.tgz "https://testingxperts.jfrog.io/artifactory/helm/"'
+            }
         }
         }
         stage('Clean Up Approval'){
