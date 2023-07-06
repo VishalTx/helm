@@ -34,7 +34,7 @@ pipeline {
                         sh "git config user.email vishal.sader@testingxperts.com"
                         sh "git config user.name VishalTx"
                         //sh "git switch master"
-                        sh "cat deployment.yaml"
+                        
                         sh "sed -i 's+manishaverma/helm.*+manishaverma/helm:${DOCKERTAG}+g' {WORKSPACE}/webapp/templates/deployment.yaml"
                         sh "cat deployment.yaml"
                         sh "git add ."
