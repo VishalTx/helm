@@ -35,8 +35,8 @@ pipeline {
                         sh "git config user.name VishalTx"
                         //sh "git switch master"
                         
-                        sh "sed -i 's+manishaverma/helm.*+manishaverma/helm:${env.BUILD_NUMBER}+g' {WORKSPACE}/webapp/templates/deployment.yaml"
-                        sh "cat deployment.yaml"
+                        sh "sed -i 's+manishaverma/helm.*+manishaverma/helm:${env.BUILD_NUMBER}+g' webapp/templates/deployment.yaml"
+                        sh "cat webapp/templates/deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
                         sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/helm.git HEAD:master"
