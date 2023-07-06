@@ -14,7 +14,7 @@ spec:
       spec:
          containers:
             - name: webapp
-              image: vishal7500/test
+              image: manishaverma/helm
               imagePullPolicy: Always
               ports:
                  - containerPort: 9090
