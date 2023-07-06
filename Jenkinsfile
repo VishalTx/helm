@@ -45,9 +45,9 @@ pipeline {
         }
         stage ('updating the package to Jfrog'){
             steps{
-                 withCredentials([usernamePassword(credentialsId: 'helm', usernameVariable: 'HELM_USERNAME', passwordVariable: 'HELM_PASSWORD')]){
-                sh 'curl -T ${WORKSPACE}/helm/webapp-0.1.0.tgz "https://testingxperts.jfrog.io/artifactory/helm/"'
-            }
+                 
+                sh 'curl -u vishal.sader@testingxperts.com:cmVmdGtuOjAxOjE3MjAxNTg4NjQ6RGV6ZVRCaTZoYkVrVE15TFlVbk5NQVpRcGVZ -T ${WORKSPACE}/helm/webapp-0.1.0.tgz "https://testingxperts.jfrog.io/artifactory/helm/"'
+            
         }
         }
         stage('Clean Up Approval'){
