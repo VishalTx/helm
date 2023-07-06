@@ -46,7 +46,7 @@ pipeline {
         stage ('updating the package to Jfrog'){
             steps{
                  
-                sh 'curl -u vishal.sader@testingxperts.com:cmVmdGtuOjAxOjE3MjAxNTg4NjQ6RGV6ZVRCaTZoYkVrVE15TFlVbk5NQVpRcGVZ -T ${WORKSPACE}/helm/webapp-0.1.0.tgz "https://testingxperts.jfrog.io/artifactory/helm/helm"'
+                sh 'curl -u vishal.sader@testingxperts.com:cmVmdGtuOjAxOjE3MjAxNTg4NjQ6RGV6ZVRCaTZoYkVrVE15TFlVbk5NQVpRcGVZ -T ${WORKSPACE}/helm/webapp-0.1.0.tgz "https://testingxperts.jfrog.io/artifactory/helm/"'
             
         }
         }
