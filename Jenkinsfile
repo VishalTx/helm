@@ -16,6 +16,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
                     sh 'docker push manishaverma/helm:${BUILD_NUMBER}'
+                    sh 'docker -t manishaverma/helm:${BUILD_NUMBER} manishaverma/helm:latest'
+                    sh 'docker push manishaverma/helm:latest'
                     sh 'sleep 10'
                 }
             }
