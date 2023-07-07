@@ -6,7 +6,7 @@ pipeline {
 
         stage('Build image') {
             steps {
-                sh 'docker build -t manishaverma/helm:latest .'
+                sh 'docker build -t manishaverma/helm:${BUILD_NUMBER} .'
             
             }
         }
@@ -15,7 +15,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
-                    sh 'docker push manishaverma/helm:latest'
+                    sh 'docker push manishaverma/helm:${BUILD_NUMBER}'
                     sh 'sleep 10'
                 }
             }
