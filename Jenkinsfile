@@ -1,9 +1,6 @@
 pipeline {
     agent any
-     environments{
-         JFROG = credentials('jfrog')
-     }
- 
+    
     stages {
         // stage('Clone repository') {
         //     steps {
