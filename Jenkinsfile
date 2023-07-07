@@ -1,6 +1,8 @@
 pipeline {
     agent any
-   
+     environments{
+         JFROG = credentials('jfrog')
+     }
  
     stages {
         // stage('Clone repository') {
@@ -44,9 +46,9 @@ pipeline {
         }
         stage ('updating the package to Jfrog'){
             steps{
-                 
-                sh 'curl -u vishal.sader@testingxperts.com:cmVmdGtuOjAxOjE3MjAxNTg4NjQ6RGV6ZVRCaTZoYkVrVE15TFlVbk5NQVpRcGVZ -T ${WORKSPACE}/webapp/webapp-0.1.0.tgz "https://testingxperts.jfrog.io/artifactory/helm/"'
-            
+                 withCredentials([string(credentialsId: 'jfrog', variable: 'JFROG_CREDENTIALS')]){
+                sh 'curl -u vishal.sader@testingxperts.com:${JFROG_CREDENTIALS} -T ${WORKSPACE}/webapp/webapp-0.1.0.tgz "https://testingxperts.jfrog.io/artifactory/helm/"'
+                 }
           }
          }
        }
