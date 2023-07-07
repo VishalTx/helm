@@ -44,7 +44,7 @@ pipeline {
         stage ('updating the package to Jfrog'){
             steps{
                  withCredentials([string(credentialsId: 'jfrog', variable: 'JFROG_CREDENTIALS')]){
-                sh 'curl -u vishal.sader@testingxperts.com:${JFROG_CREDENTIALS} -T ${WORKSPACE}/webapp/webapp-0.1.0.tgz "https://testingxperts.jfrog.io/artifactory/helm/"'
+                sh 'curl -u vishal.sader@testingxperts.com:${JFROG_CREDENTIALS} -T ${WORKSPACE}/webapp/webapp-1.tgz "https://testingxperts.jfrog.io/artifactory/helm/"'
                  }
           }
          }
